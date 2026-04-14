@@ -1,0 +1,53 @@
+# Phase 1: Planning & Requirement Analysis
+
+This document outlines the architectural decisions and functional requirements for the BGS Knock-off MVP.
+
+## 🎯 MVP Definition
+The goal is a functional 2-player auto-battler prototype where players can shop for cards and battle each other asynchronously.
+
+### Core Constraints
+* **Multiplayer:** 2-player connection capability.
+* **Board Limit:** Maximum of 7 playable minions per board.
+* **Card Pool:** 50 unique cards distributed across Tiers 1, 2, and 3.
+
+---
+
+## 🏗️ Technical Requirements
+
+### 1. The Game Loop (State Machine)
+To manage the flow between two players, the application must handle four distinct states:
+1. **ROLLING (Shopping):** Players spend gold to buy/sell minions. Both players act simultaneously.
+2. **READY:** A waiting state triggered when one player ends their turn before the other.
+3. **COMBAT:** The engine executes the `resolveCombat()` logic using snapshots of both boards.
+4. **CLEANUP:** Hero health is updated, gold is reset, and the game returns to the ROLLING phase.
+
+### 2. Economy & Scaling
+* **Gold System:** Start at 3 Gold, increasing by 1 each turn (cap at 10).
+* **Pricing:** Standard 3 Gold to buy, 1 Gold to sell.
+* **Tavern Upgrades:** Cost to upgrade tiers decreases by 1 each turn.
+
+### 3. Data Structure (The Pool)
+The 50-card deck is not a flat list but a **Weighted Pool**. 
+* **Tier 1:** High frequency (many copies of fewer unique cards).
+* **Tier 2:** Medium frequency.
+* **Tier 3:** Low frequency (rare, powerful unique cards).
+
+---
+
+## 📡 Synchronization Strategy: "The Snapshot Rule"
+To avoid latency issues in combat, we use **Deterministic Simulation**:
+* At the end of the Shopping Phase, both clients exchange a **JSON Snapshot** of their board state.
+* Both clients run the exact same `combat.js` logic locally.
+* Because the logic is deterministic, both players see the identical fight sequence without the need for constant server updates during the battle.
+
+---
+
+## ✅ Phase 1 Checklist
+- [x] Define Board Limit (7).
+- [x] Define Card Pool Size (50).
+- [ ] Implement weighted random rolling logic.
+- [ ] Define Hero Health state (30 HP).
+- [ ] Select Communication Protocol (Socket.io vs. PeerJS).
+
+---
+*Next Step: Phase 2 - Design & Prototyping (Mocking the UI in React)*

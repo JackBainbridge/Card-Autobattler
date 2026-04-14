@@ -27,6 +27,7 @@ A modular, scalable foundation for building a browser-based auto-battler inspire
 │   │   └── minions.js   # Card Database
 │   ├── /logic
 │   │   └── combat.js    # Combat Engine
+│   │   └── rolling.js   # Shop Phase / Card Rolling
 │   └── main.js          # Entry Point
 └── package.json         # Config
 ```
