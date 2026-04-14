@@ -1,0 +1,8 @@
+
+{
+  "name": "bg-knockoff",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "BGS Logic",
+  "main": "main.js"
+}
