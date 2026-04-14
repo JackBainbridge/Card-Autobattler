@@ -38,7 +38,7 @@ To implement the **Snapshot Rule**, the following event sequence is required:
 
 ## ✅ Phase 2 Checklist
 - [x] Initialize React project with Vite.
-- [ ] Set up Zustand store with basic Gold/Health logic.
+- [x] Set up Zustand store with basic Gold/Health logic.
 - [ ] Create mock UI for the Tavern and Board.
 - [ ] Implement Socket.io client-side listeners for combat synchronization.
 - [ ] Integrate `dnd-kit` for basic drag-and-drop (Buy/Positioning).

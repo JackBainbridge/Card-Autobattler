@@ -21,8 +21,9 @@ export const rollTavern = (currentTier, slots = 3) => {
     let activePool = [];
     
     Object.values(MINION_DB).forEach(minion => {
-        if (minion.tier <= currentTier) {
-            const copies = POOL_CONFIG[minion.tier].copiesPerCard;
+        const config = POOL_CONFIG[minion.tier];
+        if (minion.tier <= currentTier && config) {
+            const copies = config.copiesPerCard;
             for (let i = 0; i < copies; i++) {
                 activePool.push({ ...minion });
             }
@@ -37,7 +38,7 @@ export const rollTavern = (currentTier, slots = 3) => {
         
         shopResult.push({
             ...selected,
-            instanceId: `shop-${Math.random().toString(36).substr(2, 9)}`,
+            instanceId: `shop-${Math.random().toString(36).slice(2, 11)}`,
             currentHealth: selected.health,
             maxHealth: selected.health
         });
