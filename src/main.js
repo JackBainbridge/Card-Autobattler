@@ -1,6 +1,6 @@
-import { resolveCombat } from './logic/combat.js';
-import { rollTavern } from './logic/rolling.js';
-import { calculateHeroDamage, applyDamageToHero } from './logic/damage.js';
+import { resolveCombat } from './api/logic/combat.js';
+import { rollTavern } from './api/logic/rolling.js';
+import { calculateHeroDamage, applyDamageToHero } from './api/logic/damage.js';
 
 // Setup Hero State
 let playerHero = { name: "Player 1", health: 40, tavernTier: 1 };
