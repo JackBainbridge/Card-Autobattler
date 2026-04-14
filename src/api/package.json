@@ -1,0 +1,10 @@
+{
+  "name": "@app/api",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Core BGS logic and game engine",
+  "scripts": {
+    "test": "node main.js"
+  }
+}

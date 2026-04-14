@@ -1,8 +1,14 @@
 
 {
-  "name": "bg-knockoff",
-  "version": "1.0.0",
-  "type": "module",
-  "description": "BGS Logic",
-  "main": "main.js"
+  "name": "card-auto-battler-root",
+  "private": true,
+  "version": "0.1.0",
+  "workspaces": [
+    "src/ui",
+    "src/api"
+  ],
+  "scripts": {
+    "ui:dev": "npm run dev -w @app/ui",
+    "api:test": "npm run test -w @app/api"
+  }
 }
