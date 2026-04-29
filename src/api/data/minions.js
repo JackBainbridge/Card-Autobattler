@@ -1,3 +1,9 @@
+export const GAME_SETTINGS = {
+    INITIAL_GOLD: 3,
+    MAX_BOARD_SIZE: 7,
+    MINION_COST: 3,
+    SELL_REWARD: 1
+};
 
 export const MINION_DB = {
     ALLEYCAT: { id: 'ALLEYCAT', name: "Alleycat", attack: 1, health: 1, tier: 1 },

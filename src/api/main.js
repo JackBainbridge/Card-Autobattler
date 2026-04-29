@@ -1,10 +1,11 @@
 import { resolveCombat } from './logic/combat.js';
 import { rollTavern } from './logic/rolling.js';
 import { calculateHeroDamage, applyDamageToHero } from './logic/damage.js';
+import { Hero } from './data/heroes.js';
 
 // Setup Hero State (Stateless for logic test)
-let playerHero = { name: "Player 1", health: 40, tavernTier: 1, board: [] };
-let enemyHero = { name: "A.I.", health: 40, tavernTier: 1 };
+let playerHero = new Hero("Player 1");
+let enemyHero = new Hero("A.I.");
 
 console.log(`--- INITIALIZING SIMULATION ---`);
 console.log(`Player Health: ${playerHero.health}, Tavern Tier: ${playerHero.tavernTier}`);
